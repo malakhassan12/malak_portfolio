@@ -1,4 +1,4 @@
-import { SERVICE } from "@/constants/ProfileConstants";
+import { SERVICE } from "@/types/ProfileTypes";
 import Link from "next/link";
 import { FC } from "react";
 import { BsArrowDownRight } from "react-icons/bs";

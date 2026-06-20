@@ -1,11 +1,11 @@
-import { CarouselDemo } from "@/components/Carousel/CarouselDemo"
+import { CarouselDemo } from "@/components/Carousel/CarouselDemo";
 
 const Work = () => {
   return (
     <div>
-      <CarouselDemo/>
+      <CarouselDemo />
     </div>
-  )
-}
+  );
+};
 
-export default Work
+export default Work;

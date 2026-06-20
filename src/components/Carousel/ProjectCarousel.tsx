@@ -1,13 +1,13 @@
 import React, { FC } from "react";
-import { CarouselApi } from "../ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { projects } from "@/constants/ProfileConstants";
 
@@ -27,7 +27,7 @@ const ProjectCarousel: FC<{
         {projects.map((p, index) => (
           <CarouselItem key={index}>
             <div className="p-1">
-              <Card className="overflow-hidden border border-white/10 bg-linear-to-br from-[#8B5CF6]/10 to-purple-900/20 backdrop-blur-sm">
+              <Card className="overflow-hidden border border-white/10 bg-linear-to-br from-[#8B5CF6]/10 to-purple-600/20 backdrop-blur-sm">
                 <CardContent className="aspect-square flex items-center justify-center p-4 sm:p-6 relative">
                   {p.image ? (
                     <div className="relative w-full h-full">
@@ -52,8 +52,8 @@ const ProjectCarousel: FC<{
 
                   {/* Title Overlay on Image */}
                   {p.image && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-4">
-                      <p className="text-white text-xs sm:text-sm font-medium truncate">
+                    <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-purple-300 to-transparent p-4">
+                      <p className="text-[#001F3F]  text-xs sm:text-sm font-bold truncate">
                         {p.title}
                       </p>
                     </div>

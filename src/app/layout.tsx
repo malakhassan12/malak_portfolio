@@ -6,11 +6,11 @@ import { ThemeProvider } from "@/context/theme-provider";
 // --------------------------- < Components >
 import Header from "@/components/Header/Header";
 
-// Optimize font loading
+// Optimize font loading and reduce CLS from web fonts
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
+  display: "optional",
 });
 
 export const metadata: Metadata = {
