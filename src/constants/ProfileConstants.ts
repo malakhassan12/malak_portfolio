@@ -4,7 +4,12 @@ import {
   FaLinkedinIn,
   FaMapMarkerAlt,
   FaPhone,
- FaJs, FaHtml5, FaReact, FaNodeJs, FaDocker } from "react-icons/fa";
+  FaJs,
+  FaHtml5,
+  FaReact,
+  FaNodeJs,
+  FaDocker,
+} from "react-icons/fa";
 import type { IconType } from "react-icons";
 import {
   About,
@@ -174,13 +179,13 @@ const experience: TimelineSection = {
       from: "Jun 2025",
       to: "Present",
       title: "MERN Stack Development Intern",
-      desc: "Enrolled in the DEPI Internship at YAT Learning Solutions Company, specializing in the React Track as part of the MERN Stack Development[cite: 14]. Crafting production-ready applications while focusing on UI performance, security, and modern web accessibility guidelines.",
+      desc: "Enrolled in the DEPI Internship at YAT Learning Solutions Company, specializing in the React Track as part of the MERN Stack Development. Crafting production-ready applications while focusing on UI performance, security, and modern web accessibility guidelines.",
     },
     {
       from: "2024",
       to: "2025",
       title: "Full-Stack MERN Developer (Projects)",
-      desc: "Built scalable applications using MongoDB, Express.js, React, and Node.js[cite: 5, 17, 25, 36]. Engineered key features including real-time communication channels via Socket.io [cite: 25, 27], role-based access control with secure JWT authentication [cite: 18, 26, 37], and optimized data flows with state management systems[cite: 30, 41].",
+      desc: "Built scalable applications using MongoDB, Express.js, React, and Node.js. Engineered key features including real-time communication channels via Socket.io, role-based access control with secure JWT authentication, and optimized data flows with state management systems.",
     },
   ],
 };
@@ -193,7 +198,7 @@ const education: TimelineSection = {
       from: "2023",
       to: "2027 (Expected)",
       title: "B.Sc. in Computer Science and Artificial Intelligence",
-      desc: "Helwan University - Majoring in Information Systems (IS)[cite: 11]. Strengthening core foundations in data structures, algorithms [cite: 61], object-oriented programming (OOP) [cite: 61], database management [cite: 61], and robust web application testing[cite: 34].",
+      desc: "Helwan University - Majoring in Information Systems (IS). Strengthening core foundations in data structures, algorithms, object-oriented programming (OOP), database management, and robust web application testing.",
     },
     {
       from: "2020",
@@ -332,4 +337,4 @@ const contactDetails = [
   },
 ];
 
-export { socials, services, projects, collectInfo, iconMap, contactDetails };
+export { socials, services, projects, collectInfo, iconMap, contactDetails, about };

@@ -1,5 +1,11 @@
 "use server";
 
+import { EmailTemplate } from "@/components/Resend/email-template";
+import { about } from "@/constants/ProfileConstants";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 export type FormState = {
   errors?: {
     firstName?: string;
@@ -11,6 +17,43 @@ export type FormState = {
   };
   success?: boolean;
 };
+
+async function sendEmailViaResend(formData: FormData): Promise<boolean> {
+  try {
+    const firstName = formData.get("firstName") as string;
+    const secondName = formData.get("secondName") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const service = formData.get("service") as string;
+    const message = formData.get("message") as string;
+
+    const { data, error } = await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: [about.email],
+      replyTo: email,
+      subject: `New Contact Form Submission from ${firstName} ${secondName}`,
+      react: EmailTemplate({
+        firstName,
+        secondName,
+        email,
+        phone,
+        service,
+        message,
+      }),
+    });
+
+    if (error) {
+      console.error("Resend API Refused to send:", error);
+      return false;
+    }
+
+    console.log("Email sent successfully:", data);
+    return true;
+  } catch (error) {
+    console.error("CRITICAL RESEND ERROR:", error);
+    return false;
+  }
+}
 
 export async function sendData(
   prevState: FormState,
@@ -25,37 +68,26 @@ export async function sendData(
 
   const errors: FormState["errors"] = {};
 
-  // Validate First Name
+  // --- الـ Validation ---
   if (!firstName || firstName.trim().length < 2) {
     errors.firstName = "First name is required (minimum 2 characters)";
   }
-  // Validate Second Name
-
   if (!secondName || secondName.trim().length < 2) {
     errors.secondName = "Second name is required (minimum 2 characters)";
   }
-
-  // Validate Email
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errors.email = "Valid email address is required";
   }
-
-  // Validate Phone (optional but must be valid if provided)
-  if (!phone && !/^[\+\d\s\-\(\)]{10,}$/.test(phone)) {
+  if (phone && !/^[+\d\s\-()]{10,}$/.test(phone)) {
     errors.phone = "Please enter a valid phone number";
   }
-
-  // Validate Service
-  if (!service || service.trim().length < 10) {
-    errors.service = "Service is required ";
+  if (!service) {
+    errors.service = "Service is required";
   }
-
-  // Validate Message
   if (!message || message.trim().length < 10) {
     errors.message = "Message is required (minimum 10 characters)";
   }
 
-  // If there are errors, return them
   if (Object.keys(errors).length > 0) {
     return {
       errors,
@@ -63,20 +95,9 @@ export async function sendData(
     };
   }
 
-  // Here you would typically send the data to your email service or database
-  // For example: await sendEmail({ firstName, secondName, email, phone, service, message });
+  const isEmailSent = await sendEmailViaResend(formData);
 
-  console.log("Form Data:", {
-    firstName,
-    secondName,
-    email,
-    phone,
-    service,
-    message,
-  });
-
-  // Return success
   return {
-    success: true,
+    success: isEmailSent,
   };
 }

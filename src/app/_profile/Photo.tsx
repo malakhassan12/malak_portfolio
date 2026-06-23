@@ -46,7 +46,7 @@ const Photo = () => {
             duration: 0.4,
           },
         }}
-        className="relative w-full h-full aspect-square z-10"
+        className="absolute inset-0 w-full h-full z-10 -translate-y-15"
       >
         <Image
           src="/Malak portfolio.webp"
@@ -54,10 +54,9 @@ const Photo = () => {
           loading="eager"
           priority
           alt="Malak"
-          className="object-contain object-top"
+          className="object-contain object-top "
           sizes="(max-width: 640px) 320px, 498px"
         />
-        
       </motion.div>
     </div>
   );
