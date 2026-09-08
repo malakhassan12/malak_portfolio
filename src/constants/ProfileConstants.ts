@@ -294,7 +294,7 @@ const about: About = {
   title: "About Me",
   desc: "I am a dedicated MERN Stack Developer specializing in building high-performance web solutions using MongoDB, Express, React, and Node.js.",
   name: "Malak Hassan Hashem",
-  phone: "01069811360",
+  phone: "11 11 111 111",
   freelance: "Available",
   nationality: "Egyptian",
   city: "Giza",
@@ -320,8 +320,8 @@ const contactDetails = [
   {
     icon: FaPhone,
     label: "Phone",
-    value: "(+20) 10 69 811 360",
-    href: "tel:+20 10 69 811 360",
+    value: "(+20) 11 11 111 111",
+    href: "tel:+20 11 11 111 111",
   },
   {
     icon: FaEnvelope,
